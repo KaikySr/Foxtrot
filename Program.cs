@@ -64,7 +64,7 @@ tm.Tick += (o, e) =>
     Rectangle EspaçoCamera = new Rectangle((int)(0.765f * bmp.Width), 0, (bmp.Width - (int)(0.765f * bmp.Width)),(int)(0.600f * bmp.Height));
     Rectangle AreaParaDesenhar = new Rectangle((int)(0.767f * bmp.Width),(int)(0.605f * bmp.Height),(int)(0.231f * bmp.Width),(int)(0.391f * bmp.Height));
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+
     //Layout//
     ////////////////////////////////////////////////////////////////////
     g.DrawRectangle(CanetaPreta, RetanguloPretoTela);
@@ -82,7 +82,23 @@ tm.Tick += (o, e) =>
     g.FillRectangle(FundoCinzaPreenchimento, PreenchimentoEnviar);
     g.DrawRectangle(CanetaPreta,EspaçoCamera);
     g.FillRectangle(FundoCinzaPreenchimento, AreaParaDesenhar);
+
     ////////////////////////////////////////////////////////////////////
+
+    
+    Image hemer = Image.FromFile("hemer.jpg");
+             
+    // Create rectangle for displaying image.
+    RectangleF destRect = new RectangleF(100.0F, 100.0F, 450.0F, 150.0F);
+             
+    // Create rectangle for source image.
+    RectangleF srcRect = new RectangleF(50.0F, 50.0F, 150.0F, 150.0F);
+
+    GraphicsUnit units = GraphicsUnit.Pixel;
+             
+    // Draw image to screen.
+    g.DrawImage(hemer, destRect, srcRect, units);
+
 
     pb.Refresh();
 };
