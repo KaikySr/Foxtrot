@@ -56,25 +56,28 @@ tm.Tick += (o, e) =>
     int alturaPreenchimentoBotoes = alturaBotao - 4;
     int larguraPreenchimentoBotoes = ((larguraMolduraMarrom) / 5);
 
+    int alturaCamera = (int)(0.500 * bmp.Height);
+    int larguraCamera = (bmp.Width - larguraMolduraMarrom);
+
     //Molduras
     Rectangle RetanguloPretoTela = new Rectangle(0, 0, bmp.Width, bmp.Height);
     Rectangle MolduraQuadro = new Rectangle(10, 10, larguraMolduraMarrom, alturaMolduraMarrom);
     Rectangle MolduraPretaMoldura = new Rectangle(0, 0, larguraMolduraMarrom + 20, alturaMolduraMarrom + 20);
-    Rectangle Desfazer = new Rectangle(0, alturaMolduraMarrom + 20, (int)((larguraMolduraMarrom + 50) / 5), alturaMolduraPreta + 20);
-    Rectangle Refazer = new Rectangle(larguraBotao, alturaMolduraMarrom + 20, (int)((larguraMolduraMarrom + 50) / 5), alturaMolduraPreta + 20); 
-    Rectangle Resetar = new Rectangle(2 * larguraBotao, alturaMolduraMarrom + 20, (int)((larguraMolduraMarrom + 50) / 5), alturaMolduraPreta + 20); 
-    Rectangle Enviar = new Rectangle(3 * larguraBotao, alturaMolduraMarrom + 20, (int)((larguraMolduraMarrom + 50) / 5), alturaMolduraPreta + 20); 
+    Rectangle Desfazer = new Rectangle(0, alturaMolduraMarrom + 20, larguraBotao, alturaBotao);
+    Rectangle Refazer = new Rectangle(larguraBotao, alturaMolduraMarrom + 20, larguraBotao, alturaBotao); 
+    Rectangle Resetar = new Rectangle(2 * larguraBotao, alturaMolduraMarrom + 20, larguraBotao, alturaBotao); 
+    Rectangle Enviar = new Rectangle(3 * larguraBotao, alturaMolduraMarrom + 20, larguraBotao, alturaBotao); 
    
     //Area Clicaveis
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Rectangle QuadroVerde = new Rectangle(11, 11, (int)(0.753f * bmp.Width), (int)(0.773f * bmp.Height));
+    Rectangle QuadroVerde = new Rectangle(15, 15, larguraMolduraMarrom - 10, alturaMolduraMarrom - 10);
     Rectangle PreenchimentoDesfazer = new Rectangle(5, alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
     Rectangle PreenchimentoRefazer = new Rectangle(larguraPreenchimentoBotoes + 15, alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
     Rectangle PreenchimentoResetar = new Rectangle((2 * larguraPreenchimentoBotoes + 25), alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
     Rectangle PreenchimentoEnviar = new Rectangle((3 * larguraPreenchimentoBotoes + 35), alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
-    Rectangle Reconhecimento = new Rectangle(4 * larguraPreenchimentoBotoes + 45, alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
-    Rectangle EspaçoCamera = new Rectangle((int)(0.765f * bmp.Width), 0, (bmp.Width - (int)(0.756f * bmp.Width)),(int)(0.600f * bmp.Height));
-    Rectangle AreaParaDesenhar = new Rectangle((int)(0.768f * bmp.Width),(int)(0.605f * bmp.Height),(int)(0.230f * bmp.Width),(int)(0.391f * bmp.Height));
+    Rectangle Reconhecimento = new Rectangle(4 * larguraPreenchimentoBotoes + 45, alturaMolduraMarrom + 25, larguraMolduraPreta - (4 * larguraBotao), alturaPreenchimentoBotoes);
+    Rectangle EspaçoCamera = new Rectangle(larguraMolduraPreta, 0, larguraCamera, alturaCamera);
+    Rectangle AreaParaDesenhar = new Rectangle(larguraMolduraPreta + 5, alturaCamera + 5, (larguraCamera - 30), bmp.Height - alturaCamera - 10);
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Layout//
@@ -88,28 +91,28 @@ tm.Tick += (o, e) =>
     g.DrawRectangle(CanetaPreta, Resetar);
     g.DrawRectangle(CanetaPreta, Enviar);
     g.FillRectangle(FundoPretoReconhecimento, Reconhecimento);
-    g.FillRectangle(FundoVerde, PreenchimentoDesfazer);
+    g.FillRectangle(FundoCinzaPreenchimento, PreenchimentoDesfazer);
     g.FillRectangle(FundoCinzaPreenchimento, PreenchimentoRefazer);
     g.FillRectangle(FundoCinzaPreenchimento, PreenchimentoResetar);
     g.FillRectangle(FundoCinzaPreenchimento, PreenchimentoEnviar);
-    // g.DrawRectangle(CanetaPreta,EspaçoCamera);
+    g.DrawRectangle(CanetaPreta,EspaçoCamera);
     g.FillRectangle(FundoCinzaPreenchimento, AreaParaDesenhar);
 
-    ////////////////////////////////////////////////////////////////////
-
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Camera//
     
-    // Image hemer = Image.FromFile("hemer.jpg");
+    Image hemer = Image.FromFile("peoples.jpg");
              
-    // // Create rectangle for displaying image.
-    // RectangleF destRect = new RectangleF(bmp.Width - (bmp.Width - (int)(0.765f * bmp.Width)), 1.0F, 450.0F, 150.0F);
+    // Create rectangle for displaying image.
+    RectangleF destRect = new RectangleF((bmp.Width - 5) - 570, 5, 570, 500);
              
-    // // Create rectangle for source image.
-    // RectangleF srcRect = new RectangleF(50.0F, 50.0F, 50.0F, 50.0F);
+    // Create rectangle for source image.
+    RectangleF srcRect = new RectangleF(0.0F, 0.0F, 540.0F, 600.0F);
 
-    // GraphicsUnit units = GraphicsUnit.Pixel;
+    GraphicsUnit units = GraphicsUnit.Pixel;
              
-    // // Draw image to screen.
-    // g.DrawImage(hemer, destRect, srcRect, units);
+    // Draw image to screen.
+    g.DrawImage(hemer, destRect, srcRect, units);
 
 
     pb.Refresh();
