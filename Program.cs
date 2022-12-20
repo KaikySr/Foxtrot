@@ -34,7 +34,13 @@ form.Load += (o, e) =>
 
 tm.Tick += (o, e) =>
 {   
-    //Canetas
+    Desenhar(bmp);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Camera//
+    void Desenhar(Image img)
+    { 
+            //Canetas
     Pen CanetaVermelhaTeste = new Pen(Brushes.Red, 10f);
     Pen CanetaPreta = new Pen(Brushes.Black, 10f);
     Pen CanetaMarrom = new Pen(Brushes.SaddleBrown, 10f);
@@ -98,18 +104,14 @@ tm.Tick += (o, e) =>
     g.DrawRectangle(CanetaPreta,EspaçoCamera);
     g.FillRectangle(FundoCinzaPreenchimento, AreaParaDesenhar);
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //Camera//
-    void Desenhar(Image img)
-    { 
-    Image cam = img;   
-    // Create rectangle for displaying image.
-    RectangleF destRect = new RectangleF((bmp.Width - 5) - larguraCamera + 30, 5, larguraCamera - 30, alturaCamera);    
-    // Create rectangle for source image.
-    RectangleF srcRect = new RectangleF(0.0F, 0.0F, cam.Width, cam.Height);
-    GraphicsUnit units = GraphicsUnit.Pixel;      
-    // Draw image to screen.
-    g.DrawImage(cam, destRect, srcRect, units);
+        Image cam = img;   
+        // Create rectangle for displaying image.
+        RectangleF destRect = new RectangleF((bmp.Width - 5) - larguraCamera + 30, 5, larguraCamera - 30, alturaCamera);    
+        // Create rectangle for source image.
+        RectangleF srcRect = new RectangleF(0.0F, 0.0F, cam.Width, cam.Height);
+        GraphicsUnit units = GraphicsUnit.Pixel;      
+        // Draw image to screen.
+        g.DrawImage(cam, destRect, srcRect, units);
     };
 
     pb.Refresh();
