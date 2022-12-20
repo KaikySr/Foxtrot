@@ -45,7 +45,7 @@ tm.Tick += (o, e) =>
     Brush FundoCinzaPreenchimento = Brushes.Gray;
 
     int alturaMolduraMarrom = (int)(0.778f * bmp.Height);
-    int larguraMolduraMarrom = (int)(0.756f * bmp.Width);
+    int larguraMolduraMarrom = (int)(0.688f * bmp.Width);  
 
     int larguraBotao = (int)((larguraMolduraMarrom + 50) / 5);
     int alturaBotao = (int)(0.199f * bmp.Height);
@@ -56,7 +56,7 @@ tm.Tick += (o, e) =>
     int alturaPreenchimentoBotoes = alturaBotao - 4;
     int larguraPreenchimentoBotoes = ((larguraMolduraMarrom) / 5);
 
-    int alturaCamera = (int)(0.500 * bmp.Height);
+    int alturaCamera = (int)(0.380 * bmp.Height);
     int larguraCamera = (bmp.Width - larguraMolduraMarrom);
 
     //Molduras
@@ -76,8 +76,8 @@ tm.Tick += (o, e) =>
     Rectangle PreenchimentoResetar = new Rectangle((2 * larguraPreenchimentoBotoes + 25), alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
     Rectangle PreenchimentoEnviar = new Rectangle((3 * larguraPreenchimentoBotoes + 35), alturaMolduraMarrom + 25, larguraPreenchimentoBotoes, alturaPreenchimentoBotoes);
     Rectangle Reconhecimento = new Rectangle(4 * larguraPreenchimentoBotoes + 45, alturaMolduraMarrom + 25, larguraMolduraPreta - (4 * larguraBotao), alturaPreenchimentoBotoes);
-    Rectangle EspaçoCamera = new Rectangle(larguraMolduraPreta, 0, larguraCamera, alturaCamera);
-    Rectangle AreaParaDesenhar = new Rectangle(larguraMolduraPreta + 5, alturaCamera + 5, (larguraCamera - 30), bmp.Height - alturaCamera - 10);
+    Rectangle EspaçoCamera = new Rectangle(larguraMolduraPreta, 0, larguraCamera, alturaCamera + 10);
+    Rectangle AreaParaDesenhar = new Rectangle(larguraMolduraPreta + 5, alturaCamera + 15, (larguraCamera - 30), bmp.Height - alturaCamera - 20);
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Layout//
@@ -104,10 +104,10 @@ tm.Tick += (o, e) =>
     Image hemer = Image.FromFile("peoples.jpg");
              
     // Create rectangle for displaying image.
-    RectangleF destRect = new RectangleF((bmp.Width - 5) - 570, 5, 570, 500);
+    RectangleF destRect = new RectangleF((bmp.Width - 5) - larguraCamera + 30, 5, larguraCamera - 30, alturaCamera);
              
     // Create rectangle for source image.
-    RectangleF srcRect = new RectangleF(0.0F, 0.0F, 540.0F, 600.0F);
+    RectangleF srcRect = new RectangleF(0.0F, 0.0F, hemer.Width, hemer.Height);
 
     GraphicsUnit units = GraphicsUnit.Pixel;
              
