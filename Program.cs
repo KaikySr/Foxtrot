@@ -100,20 +100,17 @@ tm.Tick += (o, e) =>
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Camera//
-    
-    Image hemer = Image.FromFile("peoples.jpg");
-             
+    void Desenhar(Image img)
+    { 
+    Image cam = img;   
     // Create rectangle for displaying image.
-    RectangleF destRect = new RectangleF((bmp.Width - 5) - larguraCamera + 30, 5, larguraCamera - 30, alturaCamera);
-             
+    RectangleF destRect = new RectangleF((bmp.Width - 5) - larguraCamera + 30, 5, larguraCamera - 30, alturaCamera);    
     // Create rectangle for source image.
-    RectangleF srcRect = new RectangleF(0.0F, 0.0F, hemer.Width, hemer.Height);
-
-    GraphicsUnit units = GraphicsUnit.Pixel;
-             
+    RectangleF srcRect = new RectangleF(0.0F, 0.0F, cam.Width, cam.Height);
+    GraphicsUnit units = GraphicsUnit.Pixel;      
     // Draw image to screen.
-    g.DrawImage(hemer, destRect, srcRect, units);
-
+    g.DrawImage(cam, destRect, srcRect, units);
+    };
 
     pb.Refresh();
 };
